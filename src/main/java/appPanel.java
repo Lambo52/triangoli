@@ -99,6 +99,9 @@ public class appPanel extends JPanel implements Runnable{
         g.fillOval(point3.x - 3,point3.y - 3,5,5);
 
         if(startLoop) {
+
+            g.fillOval(newPoint.x - 3, newPoint.y - 3,5,5);
+
             Random random = new Random();
             int i = random.nextInt(3);
             randomPoint = point[i];
@@ -108,7 +111,7 @@ public class appPanel extends JPanel implements Runnable{
 
             //g.fillRect(newPoint.x, newPoint.y, 1,1);
 
-            g.fillOval(newPoint.x - 3, newPoint.y - 3,5,5);
+
         }
 
 
