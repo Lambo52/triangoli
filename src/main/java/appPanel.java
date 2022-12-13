@@ -21,16 +21,16 @@ public class appPanel extends JPanel implements Runnable{
     Graphics g;
 
     Point[] point = new Point[3];
-    Point point1 = new Point(100,500);
-    Point point2 = new Point(700,500);
-    Point point3 = new Point(400,100);
+    Point point1 = new Point(100,600);
+    Point point2 = new Point(900,600);
+    Point point3 = new Point(500,100);
     Point newPoint = new Point();
     Point randomPoint = new Point();
 
     boolean startLoop = false;
 
     public appPanel() {
-        this.setPreferredSize(new Dimension(800,600)); //dimensioni pannello
+        this.setPreferredSize(new Dimension(1000,700)); //dimensioni pannello
 
         this.setBackground(Color.white);
         this.setDoubleBuffered(true); //incrementa le performances (in realtà non serve a niente)
