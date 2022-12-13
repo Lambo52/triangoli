@@ -24,8 +24,8 @@ public class appPanel extends JPanel implements Runnable {
     Point randomPoint = new Point();
     boolean startLoop = false;
 
-    private static final int POINT_WIDTH = 1;
-    private static final int POINT_HEIGHT = 1;
+    private static final int POINT_WIDTH = 5;
+    private static final int POINT_HEIGHT = 5;
 
     public appPanel() {
         this.setPreferredSize(new Dimension(1000, 700)); //dimensioni pannello
@@ -75,9 +75,9 @@ public class appPanel extends JPanel implements Runnable {
     public void paint(Graphics g) {
         g = getGraphics();
         g.setColor(Color.black);
-        g.fillRect(point1.x, point1.y, POINT_WIDTH, POINT_HEIGHT);
-        g.fillRect(point2.x, point2.y, POINT_WIDTH, POINT_HEIGHT);
-        g.fillRect(point3.x, point3.y, POINT_WIDTH, POINT_HEIGHT);
+        g.fillOval(point1.x - POINT_WIDTH / 2 - 1, point1.y - POINT_HEIGHT / 2 - 1, POINT_WIDTH, POINT_HEIGHT);
+        g.fillOval(point2.x - POINT_WIDTH / 2 - 1, point2.y - POINT_HEIGHT / 2 - 1, POINT_WIDTH, POINT_HEIGHT);
+        g.fillOval(point3.x - POINT_WIDTH / 2 - 1, point3.y - POINT_HEIGHT / 2 - 1, POINT_WIDTH, POINT_HEIGHT);
         if (startLoop) {
             //così disegna il primo punto
             //lo commento perché se il primo punto è in una zona che deve rimanere bianca poi fa schifo
@@ -87,7 +87,7 @@ public class appPanel extends JPanel implements Runnable {
             randomPoint = point[i];
             newPoint.x = (int) (newPoint.x + randomPoint.x) / 2;
             newPoint.y = (int) (newPoint.y + randomPoint.y) / 2;
-            g.fillRect(newPoint.x, newPoint.y, POINT_WIDTH, POINT_HEIGHT);
+            g.fillOval(newPoint.x - POINT_WIDTH / 2 - 1, newPoint.y - POINT_HEIGHT / 2 - 1, POINT_WIDTH, POINT_HEIGHT);
         }
         g.dispose();
     }
