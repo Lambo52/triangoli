@@ -13,7 +13,7 @@ public class appPanel extends JPanel implements Runnable{
     long lastTime;
     long currentTime;
     MouseEvent mouseClicked;
-    int FPS = 60;
+    int FPS = 1000;
     mouseInputs mouseListener = new mouseInputs(this);
     Thread gameThread; //gameThread è il thread principale per il loop
     boolean running = false; //serve per non far ripartire la thread
@@ -76,10 +76,12 @@ public class appPanel extends JPanel implements Runnable{
                 delta--;
             }
         }
-        */
+*/
+
         while(true) {
             paint(g);
         }
+
     }
 
 
@@ -87,10 +89,14 @@ public class appPanel extends JPanel implements Runnable{
     public void paint(Graphics g) {
         g = getGraphics();
         g.setColor(Color.black);
-
+/*
         g.fillRect(point1.x,point1.y,1,1);
         g.fillRect(point2.x,point2.y,1,1);
         g.fillRect(point3.x, point3.y, 1,1);
+  */
+        g.fillOval(point1.x - 3,point1.y - 3,5,5);
+        g.fillOval(point2.x - 3,point2.y - 3,5,5);
+        g.fillOval(point3.x - 3,point3.y - 3,5,5);
 
         if(startLoop) {
             Random random = new Random();
@@ -100,7 +106,9 @@ public class appPanel extends JPanel implements Runnable{
             newPoint.x = (int) (newPoint.x + randomPoint.x) / 2;
             newPoint.y = (int) (newPoint.y + randomPoint.y) / 2;
 
-            g.fillRect(newPoint.x, newPoint.y, 1,1);
+            //g.fillRect(newPoint.x, newPoint.y, 1,1);
+
+            g.fillOval(newPoint.x - 3, newPoint.y - 3,5,5);
         }
 
 
