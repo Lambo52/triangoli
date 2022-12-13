@@ -21,9 +21,9 @@ public class appPanel extends JPanel implements Runnable{
     Graphics g;
 
     Point[] point = new Point[3];
-    Point point1 = new Point(100,600);
-    Point point2 = new Point(900,600);
-    Point point3 = new Point(500,100);
+    Point point1 = new Point(100,690);
+    Point point2 = new Point(900,690);
+    Point point3 = new Point(500,10);
     Point newPoint = new Point();
     Point randomPoint = new Point();
 
