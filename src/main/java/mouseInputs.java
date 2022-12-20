@@ -3,8 +3,8 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
 public class mouseInputs implements MouseListener, MouseMotionListener {
-    appPanel aP;
-    public mouseInputs(appPanel appPanel) {
+    loopPanelClass aP;
+    public mouseInputs(loopPanelClass appPanel) {
         this.aP = appPanel;
     }
 

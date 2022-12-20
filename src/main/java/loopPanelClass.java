@@ -1,11 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
-import java.util.ArrayList;
 import java.util.Random;
 
-public class appPanel extends JPanel implements Runnable {
+public class loopPanelClass extends JPanel implements Runnable {
     double drawInterval;
     double delta;
     long lastTime;
@@ -23,11 +21,12 @@ public class appPanel extends JPanel implements Runnable {
     Point newPoint = new Point();
     Point randomPoint = new Point();
     boolean startLoop = false;
+    public boolean stop = false;
 
     private static final int POINT_WIDTH = 5;
     private static final int POINT_HEIGHT = 5;
 
-    public appPanel() {
+    public loopPanelClass() {
         this.setPreferredSize(new Dimension(1000, 700)); //dimensioni pannello
         this.setBackground(Color.white);
         this.setDoubleBuffered(true); //incrementa le performances (in realtà non serve a niente)
@@ -68,8 +67,25 @@ public class appPanel extends JPanel implements Runnable {
             }
         }*/
         while (true) {
-            paint(g);
+            if(stop == false) {
+                paint(g);
+
+            }
+            try {
+                Thread.sleep(0);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            //System.out.println("do not comment this!!");
         }
+    }
+
+    public void resetAll() {
+        g = getGraphics();
+        g.setColor(Color.white);
+        g.fillRect(0,0,1000,700);
+        stop = false;
+        startLoop = false;
     }
 
     public void paint(Graphics g) {
@@ -121,5 +137,13 @@ public class appPanel extends JPanel implements Runnable {
         has_neg = (d1 < 0) || (d2 < 0) || (d3 < 0);
         has_pos = (d1 > 0) || (d2 > 0) || (d3 > 0);
         return !(has_neg && has_pos);
+    }
+
+    public boolean isStop() {
+        return stop;
+    }
+
+    public void setStop(boolean stop) {
+        this.stop = stop;
     }
 }
