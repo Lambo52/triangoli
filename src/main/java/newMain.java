@@ -12,25 +12,19 @@ public class newMain {
         window.setResizable(false); //jijijiha
         window.setLayout(null);
 
-        JPanel loopPanel = new JPanel();
-        loopPanel.setBounds(200,0,1000,700);
-        loopPanel.setBackground(Color.white);
+        loopPanelClass loopPanel = new loopPanelClass();
+
+
         window.add(loopPanel);
 
-        JPanel controlPanel = new JPanel();
-        window.add(controlPanel);
-
-
-        loopPanelClass looppanelclass = new loopPanelClass();
-        loopPanel.add(looppanelclass); //aggiunge il panel alla finestra
-
-        controlPanelClass controlpanelclass = new controlPanelClass(controlPanel,looppanelclass);
-
+        controlPanelClass controlpanelclass = new controlPanelClass(loopPanel);
+        window.add(controlpanelclass);
         window.pack(); // incrementa le performances
         window.setLocationRelativeTo(null);
         window.setVisible(true);
 
-        looppanelclass.startThread(); //qui inizializza il thread (loop principale)
+        loopPanel.startThread(); //qui inizializza il thread (loop principale)
+        //loopPanel.startOtherThread();
 
     }
 }

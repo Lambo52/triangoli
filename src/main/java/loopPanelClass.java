@@ -12,6 +12,10 @@ public class loopPanelClass extends JPanel implements Runnable {
     int FPS = 60;
     mouseInputs mouseListener = new mouseInputs(this);
     Thread gameThread; //gameThread è il thread principale per il loop
+    Thread thread2;
+    Thread thread3;
+    Thread thread4;
+    Thread thread5;
     boolean running = false; //serve per non far ripartire la thread
     Graphics g;
     Point[] point = new Point[3];
@@ -27,8 +31,9 @@ public class loopPanelClass extends JPanel implements Runnable {
     private static final int POINT_HEIGHT = 5;
 
     public loopPanelClass() {
-        this.setPreferredSize(new Dimension(1000, 700)); //dimensioni pannello
-        this.setBackground(Color.white);
+        this.setBounds(200,0,1000, 700); //dimensioni pannello
+        this.setBackground(Color.blue);
+        this.setLayout(null);
         this.setDoubleBuffered(true); //incrementa le performances (in realtà non serve a niente)
         this.addMouseListener(mouseListener); //implementa i clic del mouse
         this.addMouseMotionListener(mouseListener); //implementa i movimenti del mouse
@@ -47,6 +52,23 @@ public class loopPanelClass extends JPanel implements Runnable {
         gameThread = new Thread(this); //qui si inizializza il Thread
         gameThread.start(); //questo chiama il metodo run direttamente
     }
+
+    /*public void startOtherThread() {
+        thread2 = new Thread(this);
+        thread2.start();
+
+        thread3 = new Thread(this);
+        thread3.start();
+
+        thread4 = new Thread(this);
+        thread4.start();
+
+        thread5 = new Thread(this);
+        thread5.start();
+    }*/
+
+
+
 
     @Override
     public void run() { //metodo generato automaticamente da runnable
@@ -105,6 +127,8 @@ public class loopPanelClass extends JPanel implements Runnable {
             newPoint.y = (int) (newPoint.y + randomPoint.y) / 2;
             g.fillOval(newPoint.x - POINT_WIDTH / 2 - 1, newPoint.y - POINT_HEIGHT / 2 - 1, POINT_WIDTH, POINT_HEIGHT);
         }
+        /*g.setColor(Color.blue);
+        g.fillRect(0,0,1000,700);*/
         g.dispose();
     }
 

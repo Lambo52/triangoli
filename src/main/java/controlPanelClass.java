@@ -3,47 +3,48 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class controlPanelClass implements ActionListener {
-    JPanel pannello;
+public class controlPanelClass extends JPanel {
     loopPanelClass loop;
     JButton buttonStop;
     JButton buttonContinue;
     JButton buttonReset;
-    public controlPanelClass(JPanel panel, loopPanelClass loopPanel) {
-        this.pannello = panel;
+    public controlPanelClass(loopPanelClass loopPanel) {
+
         this.loop = loopPanel;
 
-        panel.setBounds(0,0,200,700);
-        panel.setBackground(Color.lightGray);
-        panel.setLayout(null);
+        this.setBounds(0,0,200,700);
+        this.setBackground(Color.lightGray);
+        this.setLayout(null);
 
         buttonStop = new JButton("stop");
         buttonStop.setBounds(50,200,100,50);
-        pannello.add(buttonStop);
-        buttonStop.addActionListener(this);
+        this.add(buttonStop);
+        buttonStop.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                loop.setStop(true);
+            }
+        });
 
         buttonContinue = new JButton("continue");
         buttonContinue.setBounds(50,300,100,50);
-        pannello.add(buttonContinue);
-        buttonContinue.addActionListener(this);
+        this.add(buttonContinue);
+        buttonContinue.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                loop.setStop(false);
+            }
+        });
 
         buttonReset = new JButton("reset");
         buttonReset.setBounds(50,400,100,50);
-        pannello.add(buttonReset);
-        buttonReset.addActionListener(this);
+        this.add(buttonReset);
+        buttonReset.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                loop.resetAll();
+            }
+        });
 
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == buttonStop) {
-            loop.setStop(true);
-        }
-        else if(e.getSource() == buttonContinue) {
-            loop.setStop(false);
-        }
-        else if(e.getSource() == buttonReset) {
-            loop.resetAll();
-        }
     }
 }
